@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):                                          
         def new(self):                                                              
-                #from django.db import connection
-        	#cursor = connection.cursor()
-		#return cursor.execute("SELECT title FROM Question ORDER BY added_at")
-		pass
+                from django.db import connection
+        	cursor = connection.cursor()
+		return cursor.execute("SELECT title FROM Question ORDER BY added_at")
+		
 		                                                           
         def popular(self):                                                          
-                #from django.db import connection
-        	#cursor = connection.cursor()
-		#return cursor.execute("SELECT title FROM Question ORDER BY rating")
-		pass
+                from django.db import connection
+        	cursor = connection.cursor()
+		return cursor.execute("SELECT title FROM Question ORDER BY rating")
+		
 
 class Question(models.Model):
 	objects = QuestionManager() 
