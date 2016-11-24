@@ -4,18 +4,18 @@ class QuestionManager(models.Manager):
         def new(self):                                                              
                 from django.db import connection
         	cursor = connection.cursor()
-		cursor.execute("SELECT title FROM Question ORDER BY added_at")
+		return cursor.execute("SELECT title FROM Question ORDER BY added_at")
 		                                                           
         def popular(self):                                                          
                 from django.db import connection
         	cursor = connection.cursor()
-		cursor.execute("SELECT title FROM Question ORDER BY rating")
+		return cursor.execute("SELECT title FROM Question ORDER BY rating")
 
 class Question(models.Model):
 	objects = QuestionManager() 
 	title = models.CharField(max_length=255)
 	text = models.TextField()
-	added_at = models.DateFieldTime()
+	added_at = models.DateTimeField(blank = True)
 	rating = models.IntegerField()
 	author = models.OneToOneField(django.contrib.auth.models.User, null=True, on_delete=models.SET_NULL)
 	likes = models.ManyToMany(django.contrib.auth.models.User, related_name='question_like_user').all()
