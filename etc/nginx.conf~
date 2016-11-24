@@ -1,0 +1,26 @@
+server {
+	listen 80;
+
+	location /login/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+	location /signup/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+	location /question/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+
+	location /ask/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+
+	location /popular/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+
+	location /new/ {
+		proxy_pass http://0.0.0.0:8080;
+	}
+
+}
